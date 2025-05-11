@@ -1,0 +1,678 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8E5A7FFE-C763-42DD-8B59-0A8154D2B27A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>点餐管理系统</RootNamespace>
+    <AssemblyName>点餐管理系统</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Azure.Core, Version=1.35.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Core.1.35.0\lib\net472\Azure.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Identity, Version=1.10.3.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Identity.1.10.3\lib\netstandard2.0\Azure.Identity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.SqlClient, Version=5.0.0.0, Culture=neutral, PublicKeyToken=23ec7fc2d6eaa4a5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.SqlClient.5.2.0\lib\net462\Microsoft.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client, Version=4.56.0.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.4.56.0\lib\net461\Microsoft.Identity.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client.Extensions.Msal, Version=4.56.0.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.Extensions.Msal.4.56.0\lib\netstandard2.0\Microsoft.Identity.Client.Extensions.Msal.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Abstractions, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Abstractions.6.35.0\lib\net472\Microsoft.IdentityModel.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.6.35.0\lib\net472\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.6.35.0\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.6.35.0\lib\net472\Microsoft.IdentityModel.Protocols.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.6.35.0\lib\net472\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.35.0\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="QRCoder, Version=1.5.1.0, Culture=neutral, PublicKeyToken=c4ed5b9ae8358a28, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.5.1\lib\net40\QRCoder.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=6.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.6.0.1\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.6.0.1\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.6.35.0\lib\net472\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.AccessControl.5.0.0\lib\net461\System.IO.FileSystem.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory.Data, Version=1.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.Data.1.0.2\lib\net461\System.Memory.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.6.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.ProtectedData, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.ProtectedData.4.7.0\lib\net461\System.Security.Cryptography.ProtectedData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.6.0.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Text.Encodings.Web, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.6.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.4.7.2\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CartItemsv.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="customer\UpDate_Customer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="customer\UpDate_Customer.Designer.cs">
+      <DependentUpon>UpDate_Customer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="customer_select_orders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="customer_select_orders.Designer.cs">
+      <DependentUpon>customer_select_orders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataClasses1.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DB.cs" />
+    <Compile Include="delect_supplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="delect_supplier.Designer.cs">
+      <DependentUpon>delect_supplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Department\Delect_department.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Department\Delect_department.Designer.cs">
+      <DependentUpon>Delect_department.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Department\Insert_department.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Department\Insert_department.Designer.cs">
+      <DependentUpon>Insert_department.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Department\Update_department.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Department\Update_department.Designer.cs">
+      <DependentUpon>Update_department.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dianping.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dianping.Designer.cs">
+      <DependentUpon>dianping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelService.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Log\Select_log.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Log\Select_log.Designer.cs">
+      <DependentUpon>Select_log.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myorders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="myorders.Designer.cs">
+      <DependentUpon>myorders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Order\Check_Order.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Order\Check_Order.Designer.cs">
+      <DependentUpon>Check_Order.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Order\Proform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Order\Proform.Designer.cs">
+      <DependentUpon>Proform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
+    <Compile Include="selesDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>selesDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="selesDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>selesDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="selesDataSet10.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>selesDataSet10.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="selesDataSet11.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>selesDataSet11.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="selesDataSet12.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>selesDataSet12.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="selesDataSet13.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>selesDataSet13.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="selesDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>selesDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="selesDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>selesDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="selesDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>selesDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="selesDataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>selesDataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="selesDataSet6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>selesDataSet6.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="selesDataSet7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>selesDataSet7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="selesDataSet8.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>selesDataSet8.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="selesDataSet9.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>selesDataSet9.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ShopCart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShopCart.Designer.cs">
+      <DependentUpon>ShopCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="strat\ChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="strat\ChangePassword.Designer.cs">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="strat\Person.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="strat\Person.Designer.cs">
+      <DependentUpon>Person.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubmitCart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubmitCart.Designer.cs">
+      <DependentUpon>SubmitCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="suppli.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="suppli.Designer.cs">
+      <DependentUpon>suppli.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tdishess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tdishess.Designer.cs">
+      <DependentUpon>Tdishess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tdishes\Delete_dishes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tdishes\Delete_dishes.Designer.cs">
+      <DependentUpon>Delete_dishes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tdishes\insert_dishes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tdishes\insert_dishes.Designer.cs">
+      <DependentUpon>insert_dishes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tdishes\Upate_dishes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tdishes\Upate_dishes.Designer.cs">
+      <DependentUpon>Upate_dishes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tindex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tindex.Designer.cs">
+      <DependentUpon>Tindex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ToEmail.Designer.cs">
+      <DependentUpon>ToEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="update_supplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="update_supplier.Designer.cs">
+      <DependentUpon>update_supplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="userserive.cs" />
+    <EmbeddedResource Include="customer\UpDate_Customer.resx">
+      <DependentUpon>UpDate_Customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="customer_select_orders.resx">
+      <DependentUpon>customer_select_orders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="delect_supplier.resx">
+      <DependentUpon>delect_supplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Department\Delect_department.resx">
+      <DependentUpon>Delect_department.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Department\Insert_department.resx">
+      <DependentUpon>Insert_department.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Department\Update_department.resx">
+      <DependentUpon>Update_department.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dianping.resx">
+      <DependentUpon>dianping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Log\Select_log.resx">
+      <DependentUpon>Select_log.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="myorders.resx">
+      <DependentUpon>myorders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Order\Check_Order.resx">
+      <DependentUpon>Check_Order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Order\Proform.resx">
+      <DependentUpon>Proform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShopCart.resx">
+      <DependentUpon>ShopCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="strat\ChangePassword.resx">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="strat\Person.resx">
+      <DependentUpon>Person.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubmitCart.resx">
+      <DependentUpon>SubmitCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="suppli.resx">
+      <DependentUpon>suppli.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tdishess.resx">
+      <DependentUpon>Tdishess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tdishes\Delete_dishes.resx">
+      <DependentUpon>Delete_dishes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tdishes\insert_dishes.resx">
+      <DependentUpon>insert_dishes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tdishes\Upate_dishes.resx">
+      <DependentUpon>Upate_dishes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tindex.resx">
+      <DependentUpon>Tindex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToEmail.resx">
+      <DependentUpon>ToEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="update_supplier.resx">
+      <DependentUpon>update_supplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="DataClasses1.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataClasses1.dbml.layout">
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="selesDataSet.xsc">
+      <DependentUpon>selesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>selesDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="selesDataSet.xss">
+      <DependentUpon>selesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet1.xsc">
+      <DependentUpon>selesDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>selesDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="selesDataSet1.xss">
+      <DependentUpon>selesDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet10.xsc">
+      <DependentUpon>selesDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet10.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>selesDataSet10.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="selesDataSet10.xss">
+      <DependentUpon>selesDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet11.xsc">
+      <DependentUpon>selesDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet11.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>selesDataSet11.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="selesDataSet11.xss">
+      <DependentUpon>selesDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet12.xsc">
+      <DependentUpon>selesDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet12.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>selesDataSet12.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="selesDataSet12.xss">
+      <DependentUpon>selesDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet13.xsc">
+      <DependentUpon>selesDataSet13.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet13.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>selesDataSet13.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="selesDataSet13.xss">
+      <DependentUpon>selesDataSet13.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet2.xsc">
+      <DependentUpon>selesDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>selesDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="selesDataSet2.xss">
+      <DependentUpon>selesDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet3.xsc">
+      <DependentUpon>selesDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>selesDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="selesDataSet3.xss">
+      <DependentUpon>selesDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet4.xsc">
+      <DependentUpon>selesDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>selesDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="selesDataSet4.xss">
+      <DependentUpon>selesDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet5.xsc">
+      <DependentUpon>selesDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>selesDataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="selesDataSet5.xss">
+      <DependentUpon>selesDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet6.xsc">
+      <DependentUpon>selesDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet6.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>selesDataSet6.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="selesDataSet6.xss">
+      <DependentUpon>selesDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet7.xsc">
+      <DependentUpon>selesDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>selesDataSet7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="selesDataSet7.xss">
+      <DependentUpon>selesDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet8.xsc">
+      <DependentUpon>selesDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet8.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>selesDataSet8.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="selesDataSet8.xss">
+      <DependentUpon>selesDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet9.xsc">
+      <DependentUpon>selesDataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="selesDataSet9.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>selesDataSet9.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="selesDataSet9.xss">
+      <DependentUpon>selesDataSet9.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets'))" />
+  </Target>
+</Project>
