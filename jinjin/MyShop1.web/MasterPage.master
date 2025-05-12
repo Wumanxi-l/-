@@ -1,0 +1,55 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>智能快递柜管理系统</title>
+    <link href="css/index.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <header>
+  <div class="headtop">
+    <div class="timer box">
+	<span>
+
+    </span> 
+	
+ <div id="NoLogin" runat="server">
+     <a id="">欢迎来到丰丰智能快递柜！</a>
+ <a  href="Login.aspx">登录</a>  
+ 	<a  href="NewUser.aspx">注册</a>  
+     <a  href="ChangePwd.aspx">修改密码</a>
+     <%--<a  href="8-5.aspx">智能柜类型管理</a>--%>
+     <a href="toufang.aspx">快递员投放快递</a>
+	</div> 
+	
+	</div>
+  </div>
+  <div class="logo box"><asp:Image ID="logo" runat="server" ImageUrl="~/Images/logo.jpg" class="logo" /></div>
+  <nav id="nav" class="box">
+    <ul>
+      <li><a href="Default.aspx">网站首页</a></li>
+          <li><a href="kuidi-add.aspx">寄件下单</a></li>   
+            <%--<li><a href="qukuaidi.aspx">取快递</a></li> --%> 
+         <li><a href="WuLiu.aspx">物流记录</a></li>  
+      <li><a href="shfuwu.aspx">生活服务</a></li>  
+         <li><a href="lianxi.aspx">联系我们</a></li>
+        <li><a href="ZhiLiu.aspx">快递滞留订单</a></li>
+      <li><a href="HTLogin.aspx">后台登录</a></li>
+    </ul>
+  </nav> 
+</header>
+            <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        
+    </form>
+</body>
+</html>
