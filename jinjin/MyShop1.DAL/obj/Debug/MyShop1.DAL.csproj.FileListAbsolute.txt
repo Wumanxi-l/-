@@ -1,7 +1,0 @@
-E:\web系统与技术\快递柜管理系统2\MyShop1.DAL\bin\Debug\MyShop1.DAL.dll
-E:\web系统与技术\快递柜管理系统2\MyShop1.DAL\bin\Debug\MyShop1.DAL.pdb
-E:\web系统与技术\快递柜管理系统2\MyShop1.DAL\obj\Debug\MyShop1.DAL.csproj.AssemblyReference.cache
-E:\web系统与技术\快递柜管理系统2\MyShop1.DAL\obj\Debug\MyShop1.DAL.csproj.CoreCompileInputs.cache
-E:\web系统与技术\快递柜管理系统2\MyShop1.DAL\obj\Debug\MyShop1.DAL.dll
-E:\web系统与技术\快递柜管理系统2\MyShop1.DAL\obj\Debug\MyShop1.DAL.pdb
-E:\web系统与技术\快递柜管理系统2\MyShop1.DAL\bin\Debug\MyShop1.DAL.dll.config

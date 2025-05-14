@@ -1,5 +1,0 @@
-修改编辑器内容区的高度和宽度：
-ckeditor.js中的181行：
-width:*
-height:*
-
